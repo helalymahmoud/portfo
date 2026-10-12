@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens                                                      */
+/*  Light-first: white canvas, soft lavender section background,        */
+/*  charcoal text and a single restrained purple accent. Everything is  */
+/*  driven from these variables so the whole site can be re-themed      */
+/*  from one place.                                                     */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces */
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f5fc;
+  --color-line: #e8e5f0;
+  --color-line-strong: #d8d3e6;
+
+  /* Text */
+  --color-ink: #252333;
+  --color-ink-muted: #666477;
+  --color-ink-faint: #6f6c80;
+
+  /* Accent */
+  --color-accent: #7047eb;
+  --color-accent-strong: #5533c9;
+  --color-accent-tint: #f2eefe;
+  --color-accent-ink: #ffffff;
+
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono:
+    ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, 'Liberation Mono',
+    monospace;
+
+  --shadow-card: 0 1px 2px rgb(37 35 51 / 0.04), 0 12px 32px -22px rgb(37 35 51 / 0.18);
+  --shadow-lift: 0 2px 6px rgb(37 35 51 / 0.06), 0 28px 56px -28px rgb(83 51 201 / 0.22);
+  --shadow-accent: 0 16px 34px -18px rgb(112 71 235 / 0.5);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Fixed navigation offset for in-page anchors. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, consistent keyboard focus. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgb(112 71 235 / 0.18);
+    color: var(--color-ink);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Utilities                                                          */
+/* ------------------------------------------------------------------ */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(37 35 51 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(37 35 51 / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(rgb(112 71 235 / 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility bg-glow {
+  background-image:
+    radial-gradient(46rem 34rem at 84% -12%, rgb(112 71 235 / 0.13), transparent 62%),
+    radial-gradient(34rem 26rem at 0% 6%, rgb(85 51 201 / 0.06), transparent 60%);
+}
+
+/* Accessible <details> disclosure: rotate the chevron when open. */
+.disclosure > summary {
+  list-style: none;
+}
+
+.disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure .disclosure-chevron {
+  transition: transform 0.2s var(--ease-out-soft);
+}
+
+.disclosure[open] .disclosure-chevron {
+  transform: rotate(180deg);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Motion                                                             */
+/* ------------------------------------------------------------------ */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-flow {
+  animation: flow-dash 1.5s linear infinite;
+}
+
+.animate-node-pulse {
+  animation: node-pulse 3.2s var(--ease-out-soft) infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion                                                     */
+/*  Honour the user's system preference everywhere, including the       */
+/*  Framer Motion wrappers (which also check the preference in JS).     */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

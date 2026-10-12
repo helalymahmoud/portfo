@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: replace the domain once it is known (keep it in sync with .env).
+Sitemap: https://portfolio.example.com/sitemap.xml

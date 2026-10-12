@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Mahmoud Helaly — Backend Engineer (Node.js)">
+  <defs>
+    <radialGradient id="glow" cx="82%" cy="-8%" r="68%">
+      <stop offset="0%" stop-color="#7047eb" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#7047eb" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7047eb" />
+      <stop offset="100%" stop-color="#5533c9" />
+    </linearGradient>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#252333" stroke-opacity="0.05" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#ffffff" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <rect x="0" y="0" width="10" height="630" fill="#7047eb" />
+
+  <rect x="80" y="88" width="76" height="76" rx="18" fill="#7047eb" />
+  <text x="118" y="130" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, Menlo, monospace" font-size="32" font-weight="700" fill="#ffffff">MH</text>
+
+  <text x="80" y="250" font-family="ui-monospace, Menlo, monospace" font-size="23" letter-spacing="6" fill="#7047eb">BACKEND ENGINEER · NODE.JS</text>
+
+  <text x="80" y="356" font-family="Inter, Helvetica, Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-2" fill="#252333">Mahmoud Helaly</text>
+
+  <text x="80" y="424" font-family="Inter, Helvetica, Arial, sans-serif" font-size="33" fill="#666477">APIs · database architecture · subscriptions · real-time</text>
+
+  <rect x="80" y="474" width="148" height="5" rx="2.5" fill="url(#rule)" />
+
+  <text x="80" y="548" font-family="ui-monospace, Menlo, monospace" font-size="23" fill="#6f6c80">Node.js · NestJS · PostgreSQL · GraphQL · Stripe</text>
+</svg>
